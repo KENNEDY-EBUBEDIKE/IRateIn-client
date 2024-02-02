@@ -4,7 +4,7 @@ import sendIcon from '../../assets/images/send.png';
 import photo from '../../assets/images/photo.png';
 import { ApiService } from '../../services/apiService';
 
-const SERVER_URL = '127.0.0.1:8001';
+const WS_SERVER_URL = process.env.REACT_APP_WS_URL;
 
 interface MessagingProps {
     chatId: number;
@@ -21,7 +21,7 @@ const Messaging: React.FC<MessagingProps> = ({ chatId, userId, participant, onWe
     const [chatMessages, setChatMessages] = useState<any[]>([]);
     const [message, setMessage] = useState('');
     const [isSending, setIsSending] = useState(false);
-    const chatSocket = new WebSocket(`ws://${SERVER_URL}/ws/chat/${chatId}/?token=${token}`);
+    const chatSocket = new WebSocket(`${WS_SERVER_URL}/ws/chat/${chatId}/?token=${token}`);
 
     useEffect(() => {
 

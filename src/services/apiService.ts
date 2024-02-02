@@ -15,7 +15,7 @@ class HttpError extends Error {
     }
 }
 
-const API_BASE_URL = 'http://127.0.0.1:8001';
+const API_BASE_URL = process.env.REACT_APP_API_URL;
 
 export class ApiService {
     private apiClient = axios.create({
